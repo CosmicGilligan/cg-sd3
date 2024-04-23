@@ -7,6 +7,8 @@ aStr="1:1"
 fStr="png"
 model="core"
 
+api_key = os.environ.get('STABLE_DIFFUSION_API_KEY')
+
 def rs_change(c):
     global sStr
     sStr=c
@@ -34,7 +36,7 @@ def respond(msg, history):
     response = requests.post(
         f"https://api.stability.ai/v2beta/stable-image/generate/{model}",
         headers={
-            "authorization": f"Bearer sk-cYM2C9F0wxieJh8DhSmSAX6C8A9N72YwAobrPA1dnnePI80r",
+            "authorization": f"Bearer {api_key}",
             "accept": "image/*"
         },
         files={"none": ''},
